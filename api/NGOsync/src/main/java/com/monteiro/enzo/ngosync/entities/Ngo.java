@@ -1,4 +1,4 @@
-package com.monteiro.enzo.entities;
+package com.monteiro.enzo.ngosync.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Ngo")
+@Table(name = "Ngos")
 public class Ngo {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,14 +29,12 @@ public class Ngo {
 	@Column(nullable = false, columnDefinition = "char(60)")
 	private String password;
 	
-	private boolean status;
-	
-	@Column(nullable = false, unique = true, columnDefinition = "char(14")
+	@Column(nullable = false, unique = true, columnDefinition = "char(14)")
 	private String cnpj;
 	
 	private String logo;
 	
-	private String Description;
+	private String description;
 	
 	private String site;
 	
