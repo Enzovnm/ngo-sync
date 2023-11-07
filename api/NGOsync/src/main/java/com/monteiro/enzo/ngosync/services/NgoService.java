@@ -10,6 +10,8 @@ import com.monteiro.enzo.ngosync.entities.Ngo;
 import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class NgoService {
 	
@@ -23,8 +25,7 @@ public class NgoService {
 	}
 	
 	public NgoDto findById(long id) {
-		var result = ngoRepository.findById(id);
-		Ngo ngo = result.orElse(null);
-		return NgoMapper.INSTANCE.ngoToDto(ngo);
+		var result = ngoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Id not found " + id));
+		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
 }
