@@ -27,13 +27,6 @@ public class NgoController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<NgoDto> findById(@PathVariable Long id ){
-		
-		var result = ngoService.findById(id);
-		 
-		if(result == null) {
-			return ResponseEntity.notFound().build();
-		}
-		
 		return ResponseEntity.ok(ngoService.findById(id));
 	}
 

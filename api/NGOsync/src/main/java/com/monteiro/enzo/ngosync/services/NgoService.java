@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.NgoDto;
-import com.monteiro.enzo.ngosync.entities.Ngo;
 import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
+import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class NgoService {
