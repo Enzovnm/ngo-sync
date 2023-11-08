@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.NgoDto;
+import com.monteiro.enzo.ngosync.dtos.NgoDtoInsert;
 import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
@@ -25,6 +26,11 @@ public class NgoService {
 	
 	public NgoDto findById(long id) {
 		var result = ngoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Id not found " + id));
+		return NgoMapper.INSTANCE.ngoToDto(result);
+	}
+	
+	public NgoDto save(NgoDtoInsert ngo) {
+		var result = ngoRepository.save(NgoMapper.INSTANCE.ngoDtoInsertToNgo(ngo));
 		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
 }

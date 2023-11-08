@@ -19,7 +19,7 @@ public class Ngo {
 	@Column(nullable = false, length = 100)
 	private String name;
 	
-	@Column(nullable = false, length = 320)
+	@Column(nullable = false, unique = true, length = 320)
 	private String email;
 	
 	@Column(nullable = false, columnDefinition = "char(60)")
