@@ -22,8 +22,13 @@ import com.monteiro.enzo.ngosync.services.NgoService;
 @RequestMapping("/ngos")
 public class NgoController {
 	
+	private final NgoService ngoService;
+	
+	
 	@Autowired
-	private NgoService ngoService;
+	public NgoController(NgoService ngoService) {
+		this.ngoService = ngoService;
+	}
 	
 	@GetMapping
 	public ResponseEntity<List<NgoDto>> findAll(){
@@ -41,7 +46,7 @@ public class NgoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<NgoDto> update(@PathVariable long id, NgoDtoUpdate ngoUpdate){
+	public ResponseEntity<NgoDto> update(@PathVariable long id, @RequestBody NgoDtoUpdate ngoUpdate){
 		return ResponseEntity.ok(ngoService.update(id, ngoUpdate));
 	}
 

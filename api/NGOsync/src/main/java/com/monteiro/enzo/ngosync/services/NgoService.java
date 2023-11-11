@@ -17,8 +17,12 @@ import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 @Service
 public class NgoService {
 	
+	private final NgoRepository ngoRepository;
+	
 	@Autowired
-	private NgoRepository ngoRepository;
+	public NgoService(NgoRepository ngoRepository) {
+		this.ngoRepository = ngoRepository;
+	}
 	
 	
 	public List<NgoDto> findAll(){
