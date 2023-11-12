@@ -1,6 +1,7 @@
 package com.monteiro.enzo.ngosync.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDto;
 import com.monteiro.enzo.ngosync.entities.Ngo;
@@ -10,6 +11,7 @@ import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class DonorService {
 	
 	private final DonorRepository donorRepository;
