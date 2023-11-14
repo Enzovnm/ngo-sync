@@ -1,6 +1,5 @@
 package com.monteiro.enzo.ngosync.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDto;
@@ -10,18 +9,14 @@ import com.monteiro.enzo.ngosync.repositories.DonorRepository;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class DonorService {
 	
 	private final DonorRepository donorRepository;
 	private final NgoRepository ngoRepository;
-	
-	@Autowired
-	public DonorService(DonorRepository donorRepository, NgoRepository ngoRepository) {
-		this.donorRepository = donorRepository;
-		this.ngoRepository = ngoRepository;
-	}
 	
 	public DonorDto save(Long id,DonorDto donor) {
 		Ngo ngo = ngoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Ngo not found: " + id));

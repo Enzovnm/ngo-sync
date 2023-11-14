@@ -2,7 +2,6 @@ package com.monteiro.enzo.ngosync.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.NgoDto;
@@ -13,17 +12,14 @@ import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Service
+@RequiredArgsConstructor
 public class NgoService {
 	
 	private final NgoRepository ngoRepository;
-	
-	@Autowired
-	public NgoService(NgoRepository ngoRepository) {
-		this.ngoRepository = ngoRepository;
-	}
-	
 	
 	public List<NgoDto> findAll(){
 		var result = ngoRepository.findAll();
