@@ -18,17 +18,15 @@ import com.monteiro.enzo.ngosync.dtos.NgoDtoInsert;
 import com.monteiro.enzo.ngosync.dtos.NgoDtoUpdate;
 import com.monteiro.enzo.ngosync.services.NgoService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/ngos")
+@RequiredArgsConstructor
 public class NgoController {
 	
 	private final NgoService ngoService;
 	
-	
-	@Autowired
-	public NgoController(NgoService ngoService) {
-		this.ngoService = ngoService;
-	}
 	
 	@GetMapping
 	public ResponseEntity<List<NgoDto>> findAll(){

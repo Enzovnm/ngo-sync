@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDto;
+import com.monteiro.enzo.ngosync.dtos.DonorDtoInsert;
 import com.monteiro.enzo.ngosync.entities.Donor;
 
 @Mapper(componentModel = "spring")
@@ -13,5 +14,7 @@ public interface DonorMapper {
 				
 	DonorDto donorToDto(Donor donor);
 		
-	Donor donorDtoToDonor (DonorDto donorDto);
+	Donor donorDtoToDonor(DonorDto donorDto);
+	
+	Donor donorDtoInsertToDonor(DonorDtoInsert donorDtoInsert);
 }
