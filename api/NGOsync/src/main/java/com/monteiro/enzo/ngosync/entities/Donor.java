@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Donates")
+@Table(name = "Donors")
 public class Donor {
 	
 	@Id
@@ -22,6 +22,15 @@ public class Donor {
 	
 	@Column(nullable = false)
 	private String name;
+	
+	@Column(nullable = false, unique = true, length = 320)
+	private String email;
+	
+	@Column(unique= true, columnDefinition = "char(11)")
+	private String cpf;
+	
+	@Column(unique = true, columnDefinition = "char(14)")
+	private String cnpj;
 	
 	@Column(nullable = false, length = 15)
 	private String phone;

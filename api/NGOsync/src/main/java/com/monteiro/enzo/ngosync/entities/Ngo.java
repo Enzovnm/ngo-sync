@@ -61,7 +61,7 @@ public class Ngo {
 	@Column(nullable = false, length = 15)
 	private String phone;
 	
-	@OneToMany(mappedBy = "ngo",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "ngo",fetch = FetchType.LAZY)
 	private List<Donor> donors;
 	
 }

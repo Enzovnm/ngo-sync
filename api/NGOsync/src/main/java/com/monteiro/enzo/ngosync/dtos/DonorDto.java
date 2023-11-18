@@ -1,7 +1,5 @@
 package com.monteiro.enzo.ngosync.dtos;
 
-import com.monteiro.enzo.ngosync.entities.Ngo;
-
 import lombok.Data;
 
 @Data
@@ -9,6 +7,9 @@ public class DonorDto {
 
 	private long id;
 	private String name;
+	private String email;
+	private String cpf;
+	private String cnpj;
 	private String phone;
 	private String state;
 	private String city;
@@ -17,6 +18,5 @@ public class DonorDto {
 	private String address;
 	private int addressNumber;
 	private String addressComplement;
-	private Ngo ngo;
 	
 }

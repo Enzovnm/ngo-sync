@@ -11,7 +11,6 @@ import com.monteiro.enzo.ngosync.dtos.DonorDto;
 import com.monteiro.enzo.ngosync.dtos.DonorDtoInsert;
 import com.monteiro.enzo.ngosync.services.DonorService;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -19,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 public class DonorController {
 	
 	private final DonorService donorService;
-	
 	
 	@PostMapping("ngos/{ngoId}/donors")
 	public ResponseEntity<DonorDto> save(@PathVariable(value = "ngoId") Long id, @RequestBody DonorDtoInsert donor){

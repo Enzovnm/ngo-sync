@@ -8,6 +8,9 @@ import lombok.Data;
 public class DonorDtoInsert {
 
 	private String name;
+	private String email;
+	private String cpf;
+	private String cnpj;
 	private String phone;
 	private String state;
 	private String city;
