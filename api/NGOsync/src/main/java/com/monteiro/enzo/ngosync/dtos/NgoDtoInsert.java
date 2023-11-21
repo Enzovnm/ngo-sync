@@ -1,5 +1,6 @@
 package com.monteiro.enzo.ngosync.dtos;
 
+import org.hibernate.validator.constraints.URL;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import jakarta.validation.constraints.Email;
@@ -25,6 +26,7 @@ public record NgoDtoInsert(
 		
 		String description,
 		
+		@URL(message = "The field 'site' must be a URL")
 		String site, 
 		
 		@NotEmpty(message="The field 'state' must not be empty")
