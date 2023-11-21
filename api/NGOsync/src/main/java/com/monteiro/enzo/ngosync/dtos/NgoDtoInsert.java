@@ -1,6 +1,51 @@
 package com.monteiro.enzo.ngosync.dtos;
 
-public record NgoDtoInsert(String name, String email,String password,String cnpj, String logo, String description, String site, String state, String city, String neighborhood,
-		String postalCode, String address, int addressNumber, String addressComplement, String phone) {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-}
+public record NgoDtoInsert(
+		
+		@NotEmpty(message= "The field \"name\" must not be empty")
+		String name,
+		
+		@Email(message = "The field \"email\" is not valid")
+		String email,
+		
+		String password,
+		
+		@NotEmpty
+		@Size(min = 14,max = 14, message = "The field \"cnpj\" must have 14 characters")
+		String cnpj,
+		
+		String logo,
+		
+		String description,
+		
+		String site, 
+		
+		@NotEmpty(message="The field \"state\" must not be empty")
+		@Size(min = 2, max = 2,message = "The field \"state\" must have 2 characters")
+		String state,
+		
+		@NotEmpty(message="The field \"city\" must not be empty")
+		String city,
+		
+		@NotEmpty(message="The field \"neighborhood\" must not be empty")
+		String neighborhood,
+		
+		@NotEmpty(message="The field \"postalCode\" must not be empty")
+		@Size(min = 8,max = 8,message ="The field \"postalCode\" must have 8 characters")
+		String postalCode,
+		
+		@NotEmpty(message="The field \"address\" must not be empty")
+		String address,
+		
+		@NotNull(message="The field \"addressNumber\" must not be null")
+		int addressNumber,
+		
+		String addressComplement,
+		
+		String phone
+		) {}

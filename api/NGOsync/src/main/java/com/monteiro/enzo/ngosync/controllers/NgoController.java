@@ -2,7 +2,6 @@ package com.monteiro.enzo.ngosync.controllers;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +17,7 @@ import com.monteiro.enzo.ngosync.dtos.NgoDtoInsert;
 import com.monteiro.enzo.ngosync.dtos.NgoDtoUpdate;
 import com.monteiro.enzo.ngosync.services.NgoService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -39,7 +39,7 @@ public class NgoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<NgoDto> save(@RequestBody NgoDtoInsert ngo){
+	public ResponseEntity<NgoDto> save(@Valid @RequestBody NgoDtoInsert ngo){
 		return new ResponseEntity<NgoDto>(ngoService.save(ngo),HttpStatus.CREATED);
 	}
 	
