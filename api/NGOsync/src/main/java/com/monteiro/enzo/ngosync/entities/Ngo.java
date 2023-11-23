@@ -58,7 +58,7 @@ public class Ngo {
 	
 	private String addressComplement;
 	
-	@Column(nullable = false, length = 15)
+	@Column(length = 11)
 	private String phone;
 	
 	@OneToMany(mappedBy = "ngo",fetch = FetchType.LAZY)
