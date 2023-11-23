@@ -2,7 +2,7 @@ package com.monteiro.enzo.ngosync.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.monteiro.enzo.ngosync.services.exceptions.EntityConflictException;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.NgoDto;
@@ -28,11 +28,15 @@ public class NgoService {
 	}
 	
 	public NgoDto findById(long id) {
-		var result = ngoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Id not found " + id));
+		var result = ngoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Id not found: " + id));
 		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
 	
 	public NgoDto save(NgoDtoInsert ngo) {
+
+		if(ngoRepository.existsByEmail(ngo.email())) throw new EntityConflictException("email already exists");
+		if(ngoRepository.existsByCnpj(ngo.cnpj())) throw new EntityConflictException("cnpj already exists");
+
 		var result = ngoRepository.save(NgoMapper.INSTANCE.ngoDtoInsertToNgo(ngo));
 		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
@@ -45,8 +49,7 @@ public class NgoService {
 		return NgoMapper.INSTANCE.ngoToDto(result);
 		
 	}
-	
-	
+
 	private void updateNgoFields(Ngo ngo, NgoDtoUpdate ngoUpdate) {
 		ngo.setName(ngoUpdate.name());
 		ngo.setCnpj(ngoUpdate.cnpj());
