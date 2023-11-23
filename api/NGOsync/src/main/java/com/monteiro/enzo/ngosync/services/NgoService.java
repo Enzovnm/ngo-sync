@@ -2,6 +2,7 @@ package com.monteiro.enzo.ngosync.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.NgoDto;
@@ -18,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class NgoService {
-	
+
 	private final NgoRepository ngoRepository;
 	
 	public List<NgoDto> findAll(){
@@ -37,7 +38,7 @@ public class NgoService {
 	}
 	
 	public NgoDto update(long id, NgoDtoUpdate ngoUpdate ) {
-		var result = ngoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id not found" + id));
+		var result = ngoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id not found " + id));
 		updateNgoFields(result, ngoUpdate);
 		result = ngoRepository.save(result);
 		
