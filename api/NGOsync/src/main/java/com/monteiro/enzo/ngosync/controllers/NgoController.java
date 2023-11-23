@@ -27,7 +27,6 @@ public class NgoController {
 	
 	private final NgoService ngoService;
 	
-	
 	@GetMapping
 	public ResponseEntity<List<NgoDto>> findAll(){
 		return ResponseEntity.ok(ngoService.findAll());
@@ -44,7 +43,7 @@ public class NgoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<NgoDto> update(@PathVariable long id, @RequestBody NgoDtoUpdate ngoUpdate){
+	public ResponseEntity<NgoDto> update(@PathVariable long id, @Valid @RequestBody NgoDtoUpdate ngoUpdate){
 		return ResponseEntity.ok(ngoService.update(id, ngoUpdate));
 	}
 

@@ -11,6 +11,7 @@ import com.monteiro.enzo.ngosync.dtos.DonorDto;
 import com.monteiro.enzo.ngosync.dtos.DonorDtoInsert;
 import com.monteiro.enzo.ngosync.services.DonorService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -20,7 +21,7 @@ public class DonorController {
 	private final DonorService donorService;
 	
 	@PostMapping("ngos/{ngoId}/donors")
-	public ResponseEntity<DonorDto> save(@PathVariable(value = "ngoId") Long id, @RequestBody DonorDtoInsert donor){
+	public ResponseEntity<DonorDto> save(@PathVariable(value = "ngoId") Long id, @Valid @RequestBody DonorDtoInsert donor){
 		return new ResponseEntity<DonorDto>(donorService.save(id, donor), HttpStatus.CREATED);
 	}
 }
