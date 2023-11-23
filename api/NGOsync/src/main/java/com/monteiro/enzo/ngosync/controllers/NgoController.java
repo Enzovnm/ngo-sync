@@ -33,7 +33,7 @@ public class NgoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<NgoDto> findById(@PathVariable long id ){
+	public ResponseEntity<NgoDto> findById(@PathVariable Long id ){
 		return ResponseEntity.ok(ngoService.findById(id));
 	}
 	
@@ -43,7 +43,7 @@ public class NgoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<NgoDto> update(@PathVariable long id, @Valid @RequestBody NgoDtoUpdate ngoUpdate){
+	public ResponseEntity<NgoDto> update(@PathVariable Long id, @Valid @RequestBody NgoDtoUpdate ngoUpdate){
 		return ResponseEntity.ok(ngoService.update(id, ngoUpdate));
 	}
 
