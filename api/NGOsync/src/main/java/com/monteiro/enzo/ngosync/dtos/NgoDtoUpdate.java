@@ -1,5 +1,6 @@
 package com.monteiro.enzo.ngosync.dtos;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -44,5 +45,6 @@ public record NgoDtoUpdate(
 		int addressNumber,
 		
 		String addressComplement,
-		
+
+		@Length(min = 11, max = 11, message = "The field 'phone' must have 11 characters")
 		String phone) {}
