@@ -8,9 +8,8 @@ import com.monteiro.enzo.ngosync.entities.Ngo;
 import com.monteiro.enzo.ngosync.mapper.DonorMapper;
 import com.monteiro.enzo.ngosync.repositories.DonorRepository;
 import com.monteiro.enzo.ngosync.repositories.NgoRepository;
+import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
