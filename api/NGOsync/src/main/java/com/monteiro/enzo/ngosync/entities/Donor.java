@@ -32,7 +32,7 @@ public class Donor {
 	@Column(unique = true, columnDefinition = "char(14)")
 	private String cnpj;
 	
-	@Column(nullable = false, length = 11)
+	@Column(length = 11)
 	private String phone;
 	
 	@Column(nullable = false, columnDefinition = "char(2)")
