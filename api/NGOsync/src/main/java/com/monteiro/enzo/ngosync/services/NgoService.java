@@ -27,7 +27,7 @@ public class NgoService {
 		return result.stream().map(NgoMapper.INSTANCE::ngoToDto).toList();
 	}
 	
-	public NgoDto findById(long id) {
+	public NgoDto findById(Long id) {
 		var result = ngoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Id not found: " + id));
 		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
@@ -41,7 +41,7 @@ public class NgoService {
 		return NgoMapper.INSTANCE.ngoToDto(result);
 	}
 	
-	public NgoDto update(long id, NgoDtoUpdate ngoUpdate ) {
+	public NgoDto update(Long id, NgoDtoUpdate ngoUpdate ) {
 		var result = ngoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id not found " + id));
 		updateNgoFields(result, ngoUpdate);
 		result = ngoRepository.save(result);
