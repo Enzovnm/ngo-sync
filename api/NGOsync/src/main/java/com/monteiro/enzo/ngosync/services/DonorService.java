@@ -11,6 +11,7 @@ import com.monteiro.enzo.ngosync.repositories.NgoRepository;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +19,8 @@ public class DonorService {
 	
 	private final DonorRepository donorRepository;
 	private final NgoRepository ngoRepository;
-	
+
+	@Transactional
 	public DonorDto save(Long id,DonorDtoInsert donor) {
 		Ngo ngo = ngoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Ngo not found: " + id));
 		donor.setNgo(ngo);
