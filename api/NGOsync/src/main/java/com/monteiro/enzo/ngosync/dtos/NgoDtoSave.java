@@ -9,11 +9,12 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public record NgoDtoInsert(
+public record NgoDtoSave(
 		
 		@NotEmpty(message= "The field 'name' must not be empty")
 		String name,
-		
+
+		@NotEmpty(message = "The field 'email' must not be empty")
 		@Email(message = "The field 'email' is not valid")
 		String email,
 		
