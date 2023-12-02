@@ -8,4 +8,7 @@ import com.monteiro.enzo.ngosync.entities.Donor;
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Long>{
 
+    boolean existsByEmail (String email);
+
+    boolean existsByCpfOrCnpj (String cpf, String cpj);
 }
