@@ -3,6 +3,7 @@ package com.monteiro.enzo.ngosync.controllers.exceptions;
 import java.time.Instant;
 
 import com.monteiro.enzo.ngosync.services.exceptions.EntityConflictException;
+import com.monteiro.enzo.ngosync.services.exceptions.EntityUnprocessableException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -52,4 +53,17 @@ public class ControllerExceptionHandler {
 
 		return ResponseEntity.status(HttpStatus.CONFLICT.value()).body(err);
 	}
+
+	@ExceptionHandler(EntityUnprocessableException.class)
+	public ResponseEntity<StandardError> entityUnprocessable(EntityUnprocessableException e, HttpServletRequest request){
+		StandardError err = new StandardError();
+		err.setTimestap(Instant.now());
+		err.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
+		err.setError("Resource is unprocessable");
+		err.setMessage(e.getMessage());
+		err.setPath(request.getRequestURI());
+
+		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY.value()).body(err);
+	}
+
 }
