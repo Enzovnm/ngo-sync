@@ -1,5 +1,5 @@
 package com.monteiro.enzo.ngosync.dtos;
-public record DonorDto (
+public record DonorDtoResponse(
 		Long id,
 		String name,
 		String email,
