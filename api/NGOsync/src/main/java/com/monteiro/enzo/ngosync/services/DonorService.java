@@ -2,8 +2,10 @@ package com.monteiro.enzo.ngosync.services;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDtoSaveUpdate;
 import com.monteiro.enzo.ngosync.entities.Donor;
+import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityConflictException;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityUnprocessableException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDtoResponse;
@@ -16,12 +18,29 @@ import com.monteiro.enzo.ngosync.services.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DonorService {
 	
 	private final DonorRepository donorRepository;
 	private final NgoRepository ngoRepository;
+
+	@Transactional(readOnly = true)
+	public List<DonorDtoResponse> findAllByNgo(Long ngoId){
+		boolean ngoExists = ngoRepository.existsById(ngoId);
+		if(!ngoExists) throw new EntityNotFoundException("Ngo not found: " + ngoId);
+		var donors = donorRepository.findByNgoId(ngoId);
+		return donors.stream().map(DonorMapper.INSTANCE::donorToDto).toList();
+	}
+
+	@Transactional(readOnly = true)
+	public DonorDtoResponse findById(Long donorId){
+		var result = donorRepository.findById(donorId).orElseThrow(() -> new EntityNotFoundException("Donor not found: " + donorId));
+		return DonorMapper.INSTANCE.donorToDto(result);
+	}
+
 
 	@Transactional
 	public DonorDtoResponse save(Long ngoId, DonorDtoSaveUpdate donor) {
@@ -50,7 +69,15 @@ public class DonorService {
 	private void checkIfcpfAndCnpjAreValid(String cpf, String cnpj){
 		if (cpf == null && cnpj == null) throw new EntityUnprocessableException("cpf and cnpj are null. At least one of them must be filled");
 		if (cpf != null && cnpj != null) throw new EntityUnprocessableException("Exactly one of cpf or cnpj must be filled");
-		if(donorRepository.existsByCpfOrCnpj(cpf, cnpj)) throw new EntityConflictException("cpf/cnpj already exists");
+
+		if(cpf != null){
+			if(donorRepository.existsByCpf(cpf)) throw new EntityConflictException("cpf already exists");
+		}
+
+		if(cnpj != null){
+			if(donorRepository.existsByCnpj(cnpj)) throw new EntityConflictException("cnpj already exists");
+		}
+
 	}
 
 	private void checkIfEmailExists (String email){

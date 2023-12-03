@@ -5,10 +5,14 @@ import org.springframework.stereotype.Repository;
 
 import com.monteiro.enzo.ngosync.entities.Donor;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Long>{
 
     boolean existsByEmail (String email);
-
-    boolean existsByCpfOrCnpj (String cpf, String cpj);
+    boolean existsByCpf(String cpf);
+    boolean existsByCnpj(String cnpj);
+    List<Donor> findByNgoId(Long ngoId);
 }
