@@ -2,7 +2,6 @@ package com.monteiro.enzo.ngosync.controllers;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDtoResponse;
 import com.monteiro.enzo.ngosync.dtos.DonorDtoSaveUpdate;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

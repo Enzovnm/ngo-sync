@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.monteiro.enzo.ngosync.entities.Donor;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Long>{

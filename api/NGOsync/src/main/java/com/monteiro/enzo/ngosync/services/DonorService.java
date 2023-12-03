@@ -2,10 +2,8 @@ package com.monteiro.enzo.ngosync.services;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDtoSaveUpdate;
 import com.monteiro.enzo.ngosync.entities.Donor;
-import com.monteiro.enzo.ngosync.mapper.NgoMapper;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityConflictException;
 import com.monteiro.enzo.ngosync.services.exceptions.EntityUnprocessableException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.monteiro.enzo.ngosync.dtos.DonorDtoResponse;
