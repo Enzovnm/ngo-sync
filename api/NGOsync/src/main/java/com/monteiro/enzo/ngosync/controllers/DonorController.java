@@ -20,7 +20,7 @@ public class DonorController {
 	private final DonorService donorService;
 
 	@GetMapping("ngos/{ngoId}/donors")
-	public  ResponseEntity<List<DonorDtoResponse>> findALl(@PathVariable Long ngoId){
+	public  ResponseEntity<List<DonorDtoResponse>> findAll(@PathVariable Long ngoId){
 		return ResponseEntity.ok(donorService.findAllByNgo(ngoId));
 	}
 
@@ -38,4 +38,11 @@ public class DonorController {
 	public ResponseEntity<DonorDtoResponse> update(@PathVariable(value = "ngoId") Long ngoId, @PathVariable Long donorId, @Valid @RequestBody DonorDtoSaveUpdate donor){
 		return ResponseEntity.ok(donorService.update(ngoId,donorId,donor));
 	}
+
+	@DeleteMapping("donors/{donorId}")
+	public ResponseEntity<String> delete(@PathVariable Long donorId){
+		donorService.delete(donorId);
+		return ResponseEntity.noContent().build();
+	}
+
 }

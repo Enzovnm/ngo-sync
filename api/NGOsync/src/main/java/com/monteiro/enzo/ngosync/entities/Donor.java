@@ -10,6 +10,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.Instant;
 
 @Data
 @Entity
@@ -54,6 +58,15 @@ public class Donor {
 	private int addressNumber;
 	
 	private String addressComplement;
+
+	@Column(columnDefinition = "boolean default true")
+	private boolean isActive;
+
+	@CreationTimestamp
+	private Instant createdAt;
+
+	@UpdateTimestamp
+	private Instant updatedAt;
 
 	@ManyToOne
 	@JoinColumn(name = "ngo_id")

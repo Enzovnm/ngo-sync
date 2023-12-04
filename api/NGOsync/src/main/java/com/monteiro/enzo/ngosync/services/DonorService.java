@@ -64,6 +64,12 @@ public class DonorService {
 		return DonorMapper.INSTANCE.donorToDto(donorEntity);
 	}
 
+	@Transactional
+	public void delete(Long donorId){
+		var donor = donorRepository.findById(donorId).orElseThrow(() -> new EntityNotFoundException("Donor not found: " + donorId));
+		donorRepository.delete(donor);
+	}
+
 	private void checkIfcpfAndCnpjAreValid(String cpf, String cnpj){
 		if (cpf == null && cnpj == null) throw new EntityUnprocessableException("cpf and cnpj are null. At least one of them must be filled");
 		if (cpf != null && cnpj != null) throw new EntityUnprocessableException("Exactly one of cpf or cnpj must be filled");

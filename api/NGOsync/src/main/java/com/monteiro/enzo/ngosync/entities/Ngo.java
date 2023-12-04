@@ -1,5 +1,6 @@
 package com.monteiro.enzo.ngosync.entities;
 
+import java.time.Instant;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -11,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Data
 @Entity
@@ -60,6 +63,15 @@ public class Ngo {
 	
 	@Column(length = 11)
 	private String phone;
+
+	@Column(columnDefinition = "boolean default true")
+	private boolean isActive;
+
+	@CreationTimestamp
+	private Instant createdAt;
+
+	@UpdateTimestamp
+	private Instant updatedAt;
 	
 	@OneToMany(mappedBy = "ngo",fetch = FetchType.LAZY)
 	private List<Donor> donors;

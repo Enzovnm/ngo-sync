@@ -1,4 +1,7 @@
 package com.monteiro.enzo.ngosync.dtos;
+
+import java.time.Instant;
+
 public record DonorDtoResponse(
 		Long id,
 		String name,
@@ -12,5 +15,8 @@ public record DonorDtoResponse(
 		String postalCode,
 		String address,
 		int addressNumber,
-		String addressComplement
+		String addressComplement,
+		boolean isActive,
+		Instant createdAt,
+		Instant updatedAt
 		){}

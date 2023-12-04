@@ -54,5 +54,7 @@ public record NgoDtoSave(
 		String addressComplement,
 
 		@Length(min = 11, max = 11, message = "The field 'phone' must have 11 characters")
-		String phone
+		String phone,
+
+		boolean isActive
 		) {}
