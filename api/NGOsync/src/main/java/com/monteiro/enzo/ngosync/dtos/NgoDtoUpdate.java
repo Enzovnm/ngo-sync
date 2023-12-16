@@ -47,4 +47,4 @@ public record NgoDtoUpdate(
 		String addressComplement,
 
 		@Length(min = 11, max = 11, message = "The field 'phone' must have 11 characters")
-		String phone, boolean isActive) {}
+		String phone, boolean enabled) {}

@@ -60,7 +60,7 @@ public class Donor {
 	private String addressComplement;
 
 	@Column(columnDefinition = "boolean default true")
-	private boolean isActive;
+	private boolean enabled;
 
 	@CreationTimestamp
 	private Instant createdAt;

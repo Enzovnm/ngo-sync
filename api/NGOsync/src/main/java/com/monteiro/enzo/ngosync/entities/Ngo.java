@@ -65,7 +65,7 @@ public class Ngo {
 	private String phone;
 
 	@Column(columnDefinition = "boolean default true")
-	private boolean isActive;
+	private boolean enabled;
 
 	@CreationTimestamp
 	private Instant createdAt;

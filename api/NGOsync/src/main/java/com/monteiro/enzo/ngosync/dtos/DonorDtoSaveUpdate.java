@@ -46,8 +46,6 @@ public class DonorDtoSaveUpdate {
 
 	private String addressComplement;
 
-	private boolean isActive;
-
 	@JsonIgnore
 	private Ngo ngo;
 	

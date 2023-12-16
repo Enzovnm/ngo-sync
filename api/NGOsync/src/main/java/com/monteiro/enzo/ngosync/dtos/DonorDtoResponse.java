@@ -16,7 +16,7 @@ public record DonorDtoResponse(
 		String address,
 		int addressNumber,
 		String addressComplement,
-		boolean isActive,
+		boolean enabled,
 		Instant createdAt,
 		Instant updatedAt
 		){}
