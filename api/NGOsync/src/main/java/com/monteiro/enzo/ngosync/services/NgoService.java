@@ -56,7 +56,6 @@ public class NgoService {
 
 	private void updateNgoFields(Ngo ngo, NgoDtoUpdate ngoUpdate) {
 		ngo.setName(ngoUpdate.name());
-		ngo.setCnpj(ngoUpdate.cnpj());
 		ngo.setLogo(ngoUpdate.logo());
 		ngo.setDescription(ngoUpdate.description());
 		ngo.setSite(ngoUpdate.site());
@@ -68,5 +67,6 @@ public class NgoService {
 		ngo.setAddressNumber(ngoUpdate.addressNumber());
 		ngo.setAddressComplement(ngoUpdate.addressComplement());
 		ngo.setPhone(ngoUpdate.phone());
+		ngo.setEnabled(ngoUpdate.enabled());
 	}
 }

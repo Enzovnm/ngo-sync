@@ -12,11 +12,7 @@ public record NgoDtoUpdate(
 		
 		@NotEmpty(message= "The field 'name' must not be empty")
 		String name,
-		
-		@NotEmpty(message = "The field 'cnpj' must not be empty")
-		@CNPJ(message = "The field 'cnpj' is invalid")
-		String cnpj,
-		
+
 		String logo,
 		
 		String description,
